@@ -1,0 +1,103 @@
+@import "../../../../styles/variables.less";
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 168px;
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1110px;
+    padding: 0px 24px;
+  }
+
+  &__mainProduct {
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: @orange;
+    padding: 96px 112px 0px 112px;
+    overflow: hidden;
+    gap: 138px;
+  }
+
+  &__mainProductImage {
+    width: 30vw;
+    width: 410.23px;
+    transform: translateY(13px);
+    overflow: visible;
+    z-index: 2;
+  }
+
+  &__mainProductDetails {
+    padding-top: 30px;
+    color: white;
+    z-index: 2;
+  }
+
+  &__desc {
+    padding: 24px 0px;
+  }
+
+  &__mainProductButton {
+    padding: 13px 32px 15px 32px;
+    background-color: @black;
+    font-family: inherit;
+    font-weight: 600;
+    color: white;
+  }
+
+  &__mainProductBG {
+    position: absolute;
+    left: -140px;
+    top: -30px;
+    width: 950px;
+    z-index: 1;
+  }
+
+  &__categories {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    &__mainProductImage {
+      width: 300px;
+    }
+    &__mainProductBG {
+      left: -140px;
+      width: 800px;
+    }
+  }
+
+  @media only screen and (max-width: 981px) {
+    &__mainProduct {
+      gap: 80px;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    &__mainProductImage {
+      width: 250px;
+    }
+    &__title {
+      font-size: 2.4rem;
+    }
+    &__desc {
+      font-size: 0.8rem;
+      padding: 12px 0px;
+    }
+    &__mainProductBG {
+      left: -90px;
+      top: -5px;
+      width: 650px;
+    }
+  }
+}

@@ -1,0 +1,98 @@
+@import "../../../styles/variables.less";
+
+.nav {
+  background: @lightBlack;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 24px;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1109px;
+    padding: 35px 0px;
+    border-bottom: 1px solid rgba(200, 200, 200, 1);
+    width: 100%;
+  }
+
+  &__mobileIcon {
+    display: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    width: 143px;
+    height: 25px;
+  }
+
+  &__cart {
+    padding: 5px 60px;
+  }
+
+  &__navList {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__navItem {
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 300ms ease;
+
+    &_active {
+      color: @orange;
+    }
+
+    &:hover {
+      color: @orange;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+    &__wrap {
+      justify-content: center;
+      gap: 42px;
+    }
+    &__logo {
+      margin-right: auto;
+    }
+    &__navList {
+      display: none;
+    }
+    &__mobileIcon {
+      display: block;
+    }
+  }
+}
+
+.mobileMenu {
+  position: absolute;
+  background-color: @white;
+  width: 100%;
+  z-index: 4;
+  transition: 100ms linear;
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-height: 340px;
+    padding: 2em;
+  }
+}
+
+.overlay {
+  position: fixed;
+  height: 100vh;
+  width: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,73 @@
+@import "../../../styles/variables.less";
+
+.navItem {
+  text-align: center;
+  color: black;
+  background-color: @grey;
+  border-radius: 10px;
+  font-weight: 700;
+  height: 165px;
+  width: 223px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 22px;
+  gap: 15px;
+
+  &__ImageWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 115px;
+    margin-top: -65px;
+    position: relative;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    p {
+      font-size: 0.8rem;
+    }
+  }
+
+  &__navImage {
+    width: 154px;
+    position: relative;
+    top: 15px;
+    z-index: 2;
+    transition: 300ms ease;
+  }
+
+  &__arrowWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+
+    p {
+      opacity: 0.5;
+      letter-spacing: 2px;
+    }
+
+    img {
+      height: 13px;
+      width: 8px;
+      transition: 300ms ease;
+    }
+  }
+
+  &:hover {
+    .navItem__navImage {
+      transform: translateY(-25px);
+    }
+    .navItem__arrowWrap {
+      img {
+        transform: translateX(5px);
+      }
+    }
+  }
+}

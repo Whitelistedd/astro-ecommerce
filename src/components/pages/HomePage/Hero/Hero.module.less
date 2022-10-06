@@ -1,0 +1,62 @@
+@import "../../../../styles/variables.less";
+.container {
+  background-color: @lightBlack;
+  width: 100%;
+  height: 729px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: @white;
+  padding: 0px 24px;
+  background-image: url("../../../../../public/assets/home/desktop/image-header.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+
+  &__newProduct {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 1110px;
+    width: 1110px;
+  }
+
+  &__newProductWrap {
+    width: 380px;
+  }
+
+  &__newProductTitle {
+    color: @white;
+    font-weight: 100;
+    opacity: 0.5;
+  }
+
+  &__newProductName {
+    padding: 0.3em 0em;
+  }
+
+  &__newProductDesc {
+    opacity: 0.75;
+  }
+
+  &__newProductButton {
+    padding: 15px 31px;
+    background-color: @orange;
+    border: none;
+    color: @white;
+    margin-top: 40px;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    background-image: url("../../../../../public/assets/home/tablet/image-header.jpg");
+    text-align: center;
+    &__newProduct {
+      justify-content: center;
+    }
+    &__newProductWrap {
+      width: 396px;
+    }
+  }
+}
