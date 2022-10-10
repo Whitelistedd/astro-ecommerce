@@ -1,0 +1,129 @@
+@import "../../../../../styles/variables.less";
+
+.mainProduct {
+  width: 100%;
+  position: relative;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: @orange;
+  padding: 96px 112px 0px 112px;
+  overflow: hidden;
+  gap: 138px;
+
+  &__mainProductImage {
+    width: 30vw;
+    width: 410.23px;
+    transform: translateY(13px);
+    overflow: visible;
+    z-index: 2;
+  }
+
+  &__mainProductDetails {
+    padding-top: 30px;
+    color: white;
+    z-index: 2;
+  }
+
+  &__desc {
+    padding: 24px 0px;
+  }
+
+  &__mainProductButton {
+    padding: 13px 32px 15px 32px;
+    background-color: @black;
+    font-family: inherit;
+    font-weight: 600;
+    color: white;
+    transition: 400ms ease;
+
+    &:hover {
+      background-color: @lightBlack;
+    }
+  }
+
+  &__mainProductBG {
+    position: absolute;
+    left: -140px;
+    top: -30px;
+    width: 950px;
+    z-index: 1;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    &__mainProductImage {
+      width: 350px;
+      height: 350px;
+    }
+    &__mainProductBG {
+      left: -140px;
+      width: 800px;
+    }
+  }
+
+  @media only screen and (max-width: 981px) {
+    gap: 80px;
+  }
+  @media only screen and (max-width: 900px) {
+    display: flex;
+    height: 400px;
+    &__mainProductImage {
+      width: 300px;
+      height: 300px;
+      transform: translateY(12px);
+    }
+    &__title {
+      font-size: 2.4rem;
+    }
+    &__desc {
+      font-size: 0.8rem;
+      padding: 12px 0px;
+    }
+    &__mainProductDetails {
+      padding-top: 0px;
+    }
+    &__mainProductBG {
+      left: -90px;
+      top: -5px;
+      width: 650px;
+      height: 650px;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    height: 720px;
+    padding: 50px 0px 0px 0px;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+    background-image: url("/assets/home/pattern-circles.svg");
+    background-position: bottom;
+    background-position-y: -300px;
+    background-repeat: no-repeat;
+    &__mainProductDetails {
+      width: 349px;
+    }
+    &__title {
+      font-size: 3.5rem;
+    }
+    &__desc {
+      font-size: 0.9rem;
+    }
+    &__mainProductImage {
+      width: 197px;
+      height: 237px;
+      transform: translateY(0px);
+    }
+    &__mainProductBG {
+      position: absolute;
+      display: none;
+      top: 0px;
+      right: 0px;
+      left: 0px;
+      bottom: 0px;
+      width: 850px;
+      height: 850px;
+    }
+  }
+}

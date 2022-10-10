@@ -1,0 +1,40 @@
+---
+import Categories from "components/shared/Categories/Categories.astro";
+import { Product } from "./Product/Product";
+import styles from "./ProductsPage.module.less";
+
+interface Props {
+  title: string;
+  products: {
+    newProduct: boolean;
+    name: string;
+    desc: string;
+    image: string;
+  }[];
+}
+
+const { title, products } = Astro.props;
+---
+
+<main class={styles.container}>
+  <header class={styles.container__header}>
+    <h1 class={styles.container__header__title}>{title}</h1>
+  </header>
+  <div class={styles.container__products}>
+    <section class={styles.container__productsWrap}>
+      {
+        products?.map((product, index) => (
+          <Product
+            reverse={index % 2 !== 0 ? true : false}
+            client:visible
+            name={product.name}
+            desc={product.desc}
+            image={product.image}
+            newProduct={product.newProduct}
+          />
+        ))
+      }
+    </section>
+  </div>
+  <Categories />
+</main>

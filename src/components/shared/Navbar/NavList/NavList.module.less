@@ -1,0 +1,25 @@
+@import "../../../../styles/variables.less";
+
+.navList {
+  display: flex;
+  gap: 20px;
+
+  &__navItem {
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 300ms ease;
+
+    &_active {
+      color: @orange;
+    }
+
+    &:hover {
+      color: @orange;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+}

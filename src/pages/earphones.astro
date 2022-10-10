@@ -1,0 +1,11 @@
+---
+import ProductsPage from "components/pages/Headphones/ProductsPage.astro";
+import { earphoneList } from "constants/earphoneList";
+import { headphoneList } from "constants/headphoneList";
+import { speakerList } from "constants/speakerList";
+import Layout from "layouts/Layout.astro";
+---
+
+<Layout title="Speakers">
+  <ProductsPage title={"EARPHONES"} products={earphoneList} />
+</Layout>

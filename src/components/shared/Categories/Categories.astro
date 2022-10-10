@@ -1,0 +1,9 @@
+---
+import { Category } from "../Category/Category";
+import { NavItems } from "../Navbar/Navbar";
+import styles from "./Categories.module.less";
+---
+
+<div class={styles.container}>
+  {NavItems.slice(1).map((item, index) => <Category item={item} />)}
+</div>

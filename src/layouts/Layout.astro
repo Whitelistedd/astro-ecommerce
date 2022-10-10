@@ -3,6 +3,8 @@ export interface Props {
   title: string;
 }
 
+import About from "components/shared/About/About.astro";
+import Footer from "components/shared/Footer/Footer.astro";
 import { Navbar } from "components/shared/Navbar/Navbar";
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -23,8 +25,13 @@ const { title } = Astro.props;
   </head>
   <body>
     <Navbar currentPath={currentPath} client:visible />
-    <slot />
-    <style is:global>
+    <div>
+      <slot />
+    </div>
+    <About />
+    <Footer />
+    <style is:global lang="less">
+      @import "../styles/variables.less";
       @font-face {
         font-family: ManropeBold;
         src: url("/fonts/Manrope-Bold.ttf");
@@ -120,6 +127,7 @@ const { title } = Astro.props;
         font-size: 14px;
         line-height: 19px;
         letter-spacing: 10px;
+        color: @orange;
       }
       .subtitle {
         font-family: "ManropeBold";
@@ -131,6 +139,45 @@ const { title } = Astro.props;
         font-family: "ManropeMedium";
         font-size: 15px;
         line-height: 25px;
+      }
+      button {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .btn {
+        font-family: "ManropeRegular";
+        letter-spacing: 1px;
+        font-weight: 700;
+
+        padding: 15px 31px;
+        border: none;
+      }
+      .btn1 {
+        &:extend(.btn);
+        background-color: @orange;
+        transition: 500ms ease;
+        color: white;
+
+        &:hover {
+          background-color: @pink;
+        }
+      }
+      .btn2 {
+        &:extend(.btn);
+        background-color: transparent;
+        outline: 1px solid @black;
+        transition: 400ms ease;
+
+        &:hover {
+          background-color: @black;
+          color: @white;
+        }
+      }
+      .btn3 {
+        &:hover {
+          color: @orange;
+        }
       }
       code {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono,

@@ -1,0 +1,30 @@
+@import "../../../styles/variables.less";
+
+.container {
+  &__header {
+    background-color: @black;
+    color: @white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 98px 0px;
+    &__title {
+      font-size: 2.6rem;
+    }
+  }
+
+  &__products {
+    padding: 160px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__productsWrap {
+    max-width: 1110px;
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+    padding: 0px 24px;
+  }
+}

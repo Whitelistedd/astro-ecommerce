@@ -1,0 +1,75 @@
+@import "../../../../../styles/variables.less";
+
+.thirdProduct {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto;
+  justify-content: space-between;
+  gap: 30px;
+  height: 320px;
+
+  &__productImage {
+    border-radius: 20px;
+    overflow: hidden;
+    flex: 1.2;
+    background-image: url("/assets/home/desktop/image-earphones-yx1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__details {
+    padding: 20px 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: @grey;
+    flex: 1;
+  }
+
+  &__detailsWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  @media only screen and (max-width: 800px) {
+    gap: 10px;
+    &__productImage {
+      background-image: url("/assets/home/tablet/image-earphones-yx1.jpg");
+    }
+  }
+  @media only screen and (max-width: 685px) {
+    &__title {
+      font-size: 2rem;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 13px 20px !important;
+    }
+  }
+
+  @media only screen and (max-width: 535px) {
+    &__title {
+      font-size: 1.5rem;
+    }
+  }
+  @media only screen and (max-width: 475px) {
+    height: 410px;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    &__details {
+      align-items: flex-start;
+    }
+    &__productImage {
+      background-image: url("/assets/home/mobile/image-earphones-yx1.jpg");
+      height: 200px;
+    }
+  }
+}

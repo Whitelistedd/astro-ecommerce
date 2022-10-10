@@ -1,7 +1,7 @@
 @import "../../../styles/variables.less";
 
 .nav {
-  background: @lightBlack;
+  background: @black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,11 +34,6 @@
     padding: 5px 60px;
   }
 
-  &__navList {
-    display: flex;
-    gap: 20px;
-  }
-
   &__navItem {
     cursor: pointer;
     color: white;
@@ -55,7 +50,7 @@
     }
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 900px) {
     &__wrap {
       justify-content: center;
       gap: 42px;
@@ -76,6 +71,9 @@
   position: absolute;
   background-color: @white;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 4;
   transition: 100ms linear;
 
@@ -87,12 +85,23 @@
     gap: 30px;
     min-height: 340px;
     padding: 2em;
+    padding-top: 6em;
+  }
+
+  @media only screen and (max-width: 809px) {
+    &__navList {
+      gap: 70px;
+    }
   }
 }
 
 .overlay {
   position: fixed;
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home {
+  background: @lightBlack;
 }

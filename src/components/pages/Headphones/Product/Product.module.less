@@ -1,0 +1,67 @@
+@import "../../../../styles/variables.less";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 125px;
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    max-width: 540px;
+    max-height: 560px;
+  }
+
+  @media only screen and (max-width: 1080px) {
+    gap: 70px;
+  }
+
+  @media only screen and (max-width: 980px) {
+    &__name {
+      font-size: 2.1rem;
+    }
+
+    &__desc {
+      font-size: 0.9rem;
+    }
+  }
+  @media only screen and (max-width: 860px) {
+    gap: 30px;
+  }
+  @media only screen and (max-width: 800px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+
+    &__details {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__imageWrap {
+      width: 100%;
+      height: 352px;
+      background-color: @grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__image {
+      object-fit: contain;
+    }
+  }
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}

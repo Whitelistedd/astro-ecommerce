@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/image": "^0.9.1",
     "@astrojs/react": "^1.1.4",
+    "@astrojs/vercel": "^2.1.0",
     "antd": "^4.23.4",
     "astro": "^1.4.2",
     "framer-motion": "^7.5.2",

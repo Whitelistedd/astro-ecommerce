@@ -1,8 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Category } from "../Category/Category";
-import { Image } from "@astrojs/image/components";
-import arrowSRC from "/assets/shared/icon-arrow-right.svg";
+import { NavList } from "./NavList/NavList";
 import cartSRC from "/assets/shared/icon-cart.svg";
 import logoSRC from "/assets/shared/logo.svg";
 import mobileMenuSRC from "/assets/shared/mobileMenu.svg";
@@ -13,9 +12,10 @@ export const NavItems = ["home", "headphones", "speakers", "earphones"];
 
 interface NavbarProps {
   currentPath: string;
+  className?: string;
 }
 
-export const Navbar = ({ currentPath }: NavbarProps) => {
+export const Navbar = ({ currentPath, className }: NavbarProps) => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = () => {
@@ -24,7 +24,7 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
 
   return (
     <header>
-      <nav className={styles.nav}>
+      <nav className={`${currentPath === "" ? styles.home : ""} ${styles.nav}`}>
         <div className={styles.nav__wrap}>
           <img
             className={styles.nav__mobileIcon}
@@ -33,27 +33,7 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
             onClick={() => handleMobileMenu()}
           />
           <img className={styles.nav__logo} src={logoSRC} alt="logo" />
-          <ul className={styles.nav__navList}>
-            {NavItems.map((item, index) => (
-              <a
-                key={`item-${index}`}
-                className={styles.nav__navItem}
-                href={`/${item === "home" ? "" : item}`}
-              >
-                <li
-                  className={
-                    item === "home" && !currentPath
-                      ? styles.nav__navItem_active
-                      : currentPath === item
-                      ? styles.nav__navItem_active
-                      : ""
-                  }
-                >
-                  {item.toUpperCase()}
-                </li>
-              </a>
-            ))}
-          </ul>
+          <NavList currentPath={currentPath} />
           <img className={styles.nav__cart} src={cartSRC} alt="logo" />
         </div>
       </nav>
@@ -65,13 +45,11 @@ export const Navbar = ({ currentPath }: NavbarProps) => {
             exit={{ y: -500 }}
             className={`${styles.mobileMenu} ${styles.active}`}
           >
-            <div className={styles.mobileMenu__wrap}>
-              <ul className={styles.mobileMenu__navList}>
-                {NavItems.slice(1).map((item, index) => (
-                  <Category key={`mobole-item-${index}`} item={item} />
-                ))}
-              </ul>
-            </div>
+            <ul className={styles.mobileMenu__navList}>
+              {NavItems.slice(1).map((item, index) => (
+                <Category key={`mobole-item-${index}`} item={item} />
+              ))}
+            </ul>
           </motion.nav>
         )}
       </AnimatePresence>
