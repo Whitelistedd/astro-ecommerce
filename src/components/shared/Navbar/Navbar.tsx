@@ -2,9 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Category } from "../Category/Category";
 import { NavList } from "./NavList/NavList";
-import cartSRC from "/assets/shared/icon-cart.svg";
-import logoSRC from "/assets/shared/logo.svg";
-import mobileMenuSRC from "/assets/shared/mobileMenu.svg";
+import cartSRC from "assets/shared/IconCart.svg";
+import logoSRC from "assets/shared/logo.svg";
+import mobileMenuSRC from "assets/shared/Mobile-menu.svg";
 import styles from "./Navbar.module.less";
 import { useState } from "react";
 

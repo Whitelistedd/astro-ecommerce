@@ -1,4 +1,5 @@
-import arrowSRC from "/assets/shared/icon-arrow-right.svg";
+import Category1 from "/assets/shared/image-category-thumbnail-headphones.png";
+import arrowSRC from "assets/shared/arrowRight.svg";
 import styles from "./Category.module.less";
 
 interface CategoryProps {
