@@ -1,0 +1,46 @@
+---
+import { headphoneList } from "constants/headphoneList";
+import styles from "./SingleProductPage.module.less";
+import { SingleProduct } from "./SingleProduct/SingleProduct";
+
+interface ProductProps {
+  newProduct: boolean;
+  name: string;
+  desc: string;
+  price: number;
+  id: number;
+  image: string;
+}
+
+const { currentProduct } = Astro.props;
+const headphone = {
+  id: 1,
+  newProduct: true,
+  image: "/assets/product-xx99-mark-two-headphones/image-product.jpg",
+  name: "XX99 Mark II Headphones",
+  desc: "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
+  price: 2999,
+};
+---
+
+<main class={styles.SingleProductContainer}>
+  <script is:inline>
+    const goBack = () => {
+      window.history.back();
+    };
+  </script>
+  <div class={styles.SingleProductContainer__wrap}>
+    <a onclick="goBack()" class={styles.SingleProductContainer__goBack}>
+      <p>Go Back</p>
+    </a>
+    <SingleProduct
+      client:visible
+      newProduct={headphone.newProduct}
+      image={headphone.image}
+      desc={headphone.desc}
+      price={headphone.price}
+      id={headphone.id}
+      name={headphone.name}
+    />
+  </div>
+</main>;

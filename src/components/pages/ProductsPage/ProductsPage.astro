@@ -8,6 +8,7 @@ interface Props {
   products: {
     newProduct: boolean;
     name: string;
+    id: number;
     desc: string;
     image: string;
   }[];
@@ -16,17 +17,18 @@ interface Props {
 const { title, products } = Astro.props;
 ---
 
-<main class={styles.container}>
-  <header class={styles.container__header}>
-    <h1 class={styles.container__header__title}>{title}</h1>
+<main class={styles.productsContainer}>
+  <header class={styles.productsContainer__header}>
+    <h1 class={styles.productsContainer__header__title}>{title}</h1>
   </header>
-  <div class={styles.container__products}>
-    <section class={styles.container__productsWrap}>
+  <div class={styles.productsContainer__products}>
+    <section class={styles.productsContainer__productsWrap}>
       {
         products?.map((product, index) => (
           <Product
             reverse={index % 2 !== 0 ? true : false}
             client:visible
+            id={product.id}
             name={product.name}
             desc={product.desc}
             image={product.image}

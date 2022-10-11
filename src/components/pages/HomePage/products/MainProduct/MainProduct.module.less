@@ -29,19 +29,6 @@
     padding: 24px 0px;
   }
 
-  &__mainProductButton {
-    padding: 13px 32px 15px 32px;
-    background-color: @black;
-    font-family: inherit;
-    font-weight: 600;
-    color: white;
-    transition: 400ms ease;
-
-    &:hover {
-      background-color: @lightBlack;
-    }
-  }
-
   &__mainProductBG {
     position: absolute;
     left: -140px;
@@ -109,6 +96,7 @@
     }
     &__desc {
       font-size: 0.9rem;
+      padding: 12px;
     }
     &__mainProductImage {
       width: 197px;
@@ -116,14 +104,37 @@
       transform: translateY(0px);
     }
     &__mainProductBG {
-      position: absolute;
       display: none;
-      top: 0px;
-      right: 0px;
-      left: 0px;
-      bottom: 0px;
-      width: 850px;
-      height: 850px;
+    }
+  }
+
+  @media only screen and (max-width: 570px) {
+    &__mainProductImage {
+      width: 172px;
+      height: 207px;
+    }
+    background-size: 600px;
+    background-position-y: -140px;
+    &__title {
+      font-size: 2.5rem;
+    }
+    &__desc {
+      font-size: 0.9rem;
+    }
+    &__mainProductDetails {
+      max-width: 300px;
+      padding: 0px 12px;
+      width: 100%;
+      gap: 10px;
+    }
+  }
+  @media only screen and (max-width: 380px) {
+    &__title {
+      font-size: 2rem;
+    }
+    &__desc {
+      font-size: 0.8rem;
+      padding: 0px 0px 12px 0px;
     }
   }
 }

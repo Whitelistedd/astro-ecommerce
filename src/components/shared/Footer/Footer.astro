@@ -2,6 +2,9 @@
 import logoSRC from "assets/shared/logo.svg";
 import styles from "./Footer.module.less";
 import { NavList } from "../Navbar/NavList/NavList";
+import { IconFacebook } from "assets/shared/IconFacebook";
+import { IconTwitter } from "assets/shared/IconTwitter";
+import { IconInstagram } from "assets/shared/IconInstagram";
 import navStyles from "../Navbar/NavList/NavList.module.less";
 
 const socialMediaList = ["facebook", "twitter", "instagram"];
@@ -31,21 +34,21 @@ const currentPath = pathname.slice(1);
           Copyright 2021. All Rights Reserved
         </p>
         <ul class={styles.container__socialMedia}>
-          {
-            socialMediaList.map((item) => (
-              <a
-                class={navStyles.navList__navItem}
-                href={`https://www.${item}.com`}
-              >
-                <li>
-                  <img
-                    class={styles.container__socialMediaIMG}
-                    src={`/assets/shared/icon-${item}.svg`}
-                  />
-                </li>
-              </a>
-            ))
-          }
+          <li class={navStyles.navList__navItem}>
+            <a href={`https://www.facebook.com`}>
+              <IconFacebook className={styles.container__socialMediaIMG} />
+            </a>
+          </li>
+          <li class={navStyles.navList__navItem}>
+            <a href={`https://www.facebook.com`}>
+              <IconTwitter className={styles.container__socialMediaIMG} />
+            </a>
+          </li>
+          <li class={navStyles.navList__navItem}>
+            <a href={`https://www.facebook.com`}>
+              <IconInstagram className={styles.container__socialMediaIMG} />
+            </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,11 @@
+---
+import SingleProductPage from "components/pages/SingleProductPage/SingleProductPage.astro";
+import Layout from "layouts/Layout.astro";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentProduct = pathname.split("/")[3];
+---
+
+<Layout title={"product"}>
+  <SingleProductPage currentProduct={currentProduct} />
+</Layout>

@@ -10,22 +10,22 @@ export const NavList = ({ currentPath, className }: NavListProps) => {
   return (
     <ul className={`${className} ${styles.navList}`}>
       {NavItems.map((item, index) => (
-        <a
-          className={styles.navList__navItem}
-          href={`/${item === "home" ? "" : item}`}
+        <li
+          className={
+            item === "home" && !currentPath
+              ? styles.navList__navItem_active
+              : currentPath === item
+              ? styles.navList__navItem_active
+              : ""
+          }
         >
-          <li
-            className={
-              item === "home" && !currentPath
-                ? styles.navList__navItem_active
-                : currentPath === item
-                ? styles.navList__navItem_active
-                : ""
-            }
+          <a
+            className={styles.navList__navItem}
+            href={`/${item === "home" ? "" : item}`}
           >
             {item.toUpperCase()}
-          </li>
-        </a>
+          </a>
+        </li>
       ))}
     </ul>
   );

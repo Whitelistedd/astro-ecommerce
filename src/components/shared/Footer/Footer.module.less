@@ -50,8 +50,10 @@
   }
 
   &__socialMediaIMG {
+    color: #fff;
+    transition: 300ms ease;
     &:hover {
-      color: red !important;
+      color: @orange;
     }
   }
 
@@ -90,6 +92,29 @@
       &:nth-child(2) {
         margin-right: 5%;
       }
+    }
+  }
+  @media only screen and (max-width: 569px) {
+    &__row {
+      justify-content: center;
+      align-items: center;
+      &:nth-child(3) {
+        flex-direction: column;
+      }
+    }
+
+    &__desc {
+      text-align: center;
+    }
+
+    &__mobileNav {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__socialMedia {
+      align-self: center;
     }
   }
 }
