@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 
+import { Cart } from "./Cart/Cart";
 import { Category } from "../Category/Category";
 import { MobileNav } from "./MobileNav/MobileNav";
 import { NavList } from "./NavList/NavList";
@@ -17,10 +18,15 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ currentPath, className }: NavbarProps) => {
-  const [mobileMenu, setMobileMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showCartMenu, setShowCartMenu] = useState(false);
 
   const handleMobileMenu = () => {
-    setMobileMenu((prev) => (prev ? false : true));
+    setShowMobileMenu((prev) => (prev ? false : true));
+  };
+
+  const handleCartMenu = () => {
+    setShowCartMenu((prev) => (prev ? false : true));
   };
 
   return (
@@ -40,7 +46,11 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
           <img className={styles.nav__cart} src={cartSRC} alt="logo" />
         </div>
       </nav>
-      <MobileNav mobileMenu={mobileMenu} handleMobileMenu={handleMobileMenu} />
+      <MobileNav
+        showMobileMenu={showMobileMenu}
+        handleMobileMenu={handleMobileMenu}
+      />
+      <Cart />
     </header>
   );
 };

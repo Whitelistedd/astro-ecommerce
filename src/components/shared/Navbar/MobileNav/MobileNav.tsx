@@ -6,15 +6,18 @@ import React from "react";
 import styles from "./MobileNav.module.less";
 
 interface MobileNavProps {
-  mobileMenu: boolean;
+  showMobileMenu: boolean;
   handleMobileMenu: () => void;
 }
 
-export const MobileNav = ({ mobileMenu, handleMobileMenu }: MobileNavProps) => {
+export const MobileNav = ({
+  showMobileMenu,
+  handleMobileMenu,
+}: MobileNavProps) => {
   return (
     <>
       <AnimatePresence>
-        {mobileMenu && (
+        {showMobileMenu && (
           <motion.nav
             initial={{ y: -1000 }}
             animate={{ y: -2 }}
@@ -30,7 +33,7 @@ export const MobileNav = ({ mobileMenu, handleMobileMenu }: MobileNavProps) => {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {mobileMenu && (
+        {showMobileMenu && (
           <motion.nav
             onClick={() => handleMobileMenu()}
             initial={{ opacity: 0 }}
