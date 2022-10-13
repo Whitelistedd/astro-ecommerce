@@ -1,5 +1,5 @@
 ---
-import { headphoneList } from "constants/headphoneList";
+import { productList } from "constants/products";
 import styles from "./SingleProductPage.module.less";
 import { SingleProduct } from "./SingleProduct/SingleProduct";
 
@@ -10,37 +10,83 @@ interface ProductProps {
   price: number;
   id: number;
   image: string;
+  features: string[];
+  extraImages: string[];
+  inside: {
+    quantity: number;
+    name: string;
+  }[];
 }
 
 const { currentProduct } = Astro.props;
-const headphone = {
-  id: 1,
-  newProduct: true,
-  image: "/assets/product-xx99-mark-two-headphones/image-product.jpg",
-  name: "XX99 Mark II Headphones",
-  desc: "The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
-  price: 2999,
-};
+const headphone = productList.find(
+  (product) => product.id === Number(currentProduct)
+);
 ---
 
-<main class={styles.SingleProductContainer}>
+<main class={styles.container}>
   <script is:inline>
     const goBack = () => {
       window.history.back();
     };
   </script>
-  <div class={styles.SingleProductContainer__wrap}>
-    <a onclick="goBack()" class={styles.SingleProductContainer__goBack}>
+  <div class={styles.container__wrap}>
+    <a onclick="goBack()" class={styles.container__goBack}>
       <p>Go Back</p>
     </a>
     <SingleProduct
       client:visible
-      newProduct={headphone.newProduct}
-      image={headphone.image}
-      desc={headphone.desc}
-      price={headphone.price}
-      id={headphone.id}
-      name={headphone.name}
+      newProduct={headphone?.newProduct}
+      image={headphone?.image}
+      desc={headphone?.desc}
+      price={headphone?.price}
+      id={headphone?.id}
+      name={headphone?.name}
+      features={headphone?.features}
+      inside={headphone?.inside}
     />
+    <section class={styles.container__infoWrap}>
+      <article class={styles.container__featureWrap}>
+        <h2 class={styles.container__listTitle}>FEATURES</h2>
+        <ul class={styles.container__featuresList}>
+          {
+            headphone?.features?.map((feature) => (
+              <li>
+                <p class={styles.container__feature}>{feature}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+      <article class={styles.container__itemWrap}>
+        <h2 class={styles.container__listTitle}>IN THE BOX</h2>
+        <ul class={styles.container__itemsList}>
+          {
+            headphone?.inside?.map((item) => (
+              <li class={styles.container__itemInfo}>
+                <p class={styles.container__itemQuantity}>{item.quantity}x</p>
+                <p class={styles.container__itemName}>{item.name}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </section>
+    <section class={styles.container__extraImages}>
+      <div class={styles.container__extraImagesWrap}>
+        {
+          headphone?.extraImages.slice(0, 3).map((image, index) => (
+            <div class={styles.container__extraImage}>
+              <img src={image} alt={`${headphone.name}-image-${index}`} />
+            </div>
+          ))
+        }
+      </div>
+      <!-- <img
+        src={headphone?.extraImages[2]}
+        class={styles.container__extraImage}
+        alt={`${headphone?.name}-image-3`}
+      /> -->
+    </section>
   </div>
 </main>;

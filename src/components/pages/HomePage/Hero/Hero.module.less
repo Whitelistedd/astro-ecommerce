@@ -10,8 +10,8 @@
   padding: 0px 24px;
   background-image: url("/assets/home/desktop/image-header.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
+  background-size: 1700px;
+  background-position: bottom center;
 
   &__newProduct {
     display: flex;
@@ -43,8 +43,15 @@
     margin-top: 40px;
   }
 
+  @media only screen and (max-width: 1337px) {
+    background-size: 1300px;
+    background-position: top center;
+  }
+
   @media only screen and (max-width: 1000px) {
     background-image: url("../../../../../public/assets/home/tablet/image-header.jpg");
+    background-size: 100%;
+    background-position: center;
     text-align: center;
     &__newProduct {
       justify-content: center;

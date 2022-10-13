@@ -32,7 +32,9 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
             alt="mobileMenu"
             onClick={() => handleMobileMenu()}
           />
-          <img className={styles.nav__logo} src={logoSRC} alt="logo" />
+          <a href="/">
+            <img className={styles.nav__logo} src={logoSRC} alt="logo" />
+          </a>
           <NavList currentPath={currentPath} />
           <img className={styles.nav__cart} src={cartSRC} alt="logo" />
         </div>
@@ -40,9 +42,9 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
       <AnimatePresence>
         {mobileMenu && (
           <motion.nav
-            initial={{ y: -500 }}
+            initial={{ y: -1000 }}
             animate={{ y: -2 }}
-            exit={{ y: -500 }}
+            exit={{ y: -1000 }}
             className={`${styles.mobileMenu} ${styles.active}`}
           >
             <ul className={styles.mobileMenu__navList}>

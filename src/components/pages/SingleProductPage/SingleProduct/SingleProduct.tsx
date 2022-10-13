@@ -2,12 +2,17 @@ import styles from "./SingleProduct.module.less";
 import { useState } from "react";
 
 interface ProductProps {
-  newProduct: boolean;
-  name: string;
-  desc: string;
-  price: number;
-  id: number;
-  image: string;
+  newProduct?: boolean;
+  name?: string;
+  desc?: string;
+  price?: number;
+  id?: number;
+  image?: string;
+  features?: string[];
+  inside?: {
+    quantity: number;
+    name: string;
+  }[];
 }
 
 export const SingleProduct = ({
@@ -17,6 +22,7 @@ export const SingleProduct = ({
   newProduct,
   desc,
   image,
+  features,
 }: ProductProps) => {
   const [quantity, setQuantity] = useState(1);
 
@@ -64,7 +70,7 @@ export const SingleProduct = ({
               +
             </p>
           </div>
-          <a href={`/product/${name.replaceAll(" ", "-")}/${id}`}>
+          <a>
             <button className={`btn`}>ADD TO CART</button>
           </a>
         </div>

@@ -1,9 +1,13 @@
 ---
 import ProductsPage from "components/pages/ProductsPage/ProductsPage.astro";
-import { headphoneList } from "constants/headphoneList";
+import { productList } from "constants/products";
 import Layout from "layouts/Layout.astro";
+
+const products = productList.filter(
+  (product) => product.category === "headphones"
+);
 ---
 
 <Layout title="Headphones">
-  <ProductsPage title={"HEADPHONES"} products={headphoneList} />
+  <ProductsPage title={"HEADPHONES"} products={products} />
 </Layout>
