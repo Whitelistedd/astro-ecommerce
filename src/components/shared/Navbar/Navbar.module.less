@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   padding: 0px 24px;
+  position: relative;
 
   &__wrap {
     display: flex;
@@ -15,6 +16,7 @@
     padding: 35px 0px;
     border-bottom: 1px solid rgba(200, 200, 200, 1);
     width: 100%;
+    position: relative;
   }
 
   &__mobileIcon {
@@ -31,7 +33,10 @@
   }
 
   &__cart {
-    padding: 5px 60px;
+    margin: 5px 60px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__navItem {
@@ -80,7 +85,7 @@
       height: 22px;
     }
     &__cart {
-      padding: 0px;
+      margin: 0px;
     }
   }
 }

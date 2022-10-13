@@ -43,14 +43,19 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
             <img src={logoSRC} alt="logo" />
           </a>
           <NavList currentPath={currentPath} />
-          <img className={styles.nav__cart} src={cartSRC} alt="logo" />
+          <img
+            onClick={() => handleCartMenu()}
+            className={styles.nav__cart}
+            src={cartSRC}
+            alt="cart"
+          />
+          <Cart showCartMenu={showCartMenu} handleCartMenu={handleCartMenu} />
         </div>
       </nav>
       <MobileNav
         showMobileMenu={showMobileMenu}
         handleMobileMenu={handleMobileMenu}
       />
-      <Cart />
     </header>
   );
 };
