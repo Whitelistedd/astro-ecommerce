@@ -1,0 +1,29 @@
+@import "../../../../styles/variables.less";
+
+.mobileMenu {
+  position: absolute;
+  background-color: @white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+  transition: 100ms linear;
+
+  &__navList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    min-height: 340px;
+    padding: 2em;
+    padding-top: 6em;
+  }
+
+  @media only screen and (max-width: 809px) {
+    &__navList {
+      gap: 70px;
+    }
+  }
+}

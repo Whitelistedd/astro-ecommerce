@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Category } from "../Category/Category";
+import { MobileNav } from "./MobileNav/MobileNav";
 import { NavList } from "./NavList/NavList";
 import cartSRC from "assets/shared/IconCart.svg";
 import logoSRC from "assets/shared/logo.svg";
@@ -32,40 +33,14 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
             alt="mobileMenu"
             onClick={() => handleMobileMenu()}
           />
-          <a href="/">
-            <img className={styles.nav__logo} src={logoSRC} alt="logo" />
+          <a className={styles.nav__logo} href="/">
+            <img src={logoSRC} alt="logo" />
           </a>
           <NavList currentPath={currentPath} />
           <img className={styles.nav__cart} src={cartSRC} alt="logo" />
         </div>
       </nav>
-      <AnimatePresence>
-        {mobileMenu && (
-          <motion.nav
-            initial={{ y: -1000 }}
-            animate={{ y: -2 }}
-            exit={{ y: -1000 }}
-            className={`${styles.mobileMenu} ${styles.active}`}
-          >
-            <ul className={styles.mobileMenu__navList}>
-              {NavItems.slice(1).map((item, index) => (
-                <Category key={`mobole-item-${index}`} item={item} />
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {mobileMenu && (
-          <motion.nav
-            onClick={() => handleMobileMenu()}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            className={styles.overlay}
-          />
-        )}
-      </AnimatePresence>
+      <MobileNav mobileMenu={mobileMenu} handleMobileMenu={handleMobileMenu} />
     </header>
   );
 };
