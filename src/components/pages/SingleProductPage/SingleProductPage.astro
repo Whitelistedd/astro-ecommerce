@@ -34,17 +34,23 @@ const headphone = productList.find(
     <a onclick="goBack()" class={styles.container__goBack}>
       <p>Go Back</p>
     </a>
-    <SingleProduct
-      client:visible
-      newProduct={headphone?.newProduct}
-      image={headphone?.image}
-      desc={headphone?.desc}
-      price={headphone?.price}
-      id={headphone?.id}
-      name={headphone?.name}
-      features={headphone?.features}
-      inside={headphone?.inside}
-    />
+    {
+      headphone && (
+        <SingleProduct
+          client:visible
+          newProduct={headphone.newProduct}
+          image={headphone.image}
+          desc={headphone.desc}
+          price={headphone.price}
+          id={headphone.id}
+          name={headphone.name}
+          features={headphone.features}
+          inside={headphone.inside}
+          shortName={headphone.shortName}
+          extraImages={headphone.extraImages}
+        />
+      )
+    }
     <section class={styles.container__infoWrap}>
       <article class={styles.container__featureWrap}>
         <h2 class={styles.container__listTitle}>FEATURES</h2>
