@@ -1,19 +1,25 @@
 .cartContainer {
   position: absolute;
-  background-color: white;
-  right: 60px;
-  top: 132px;
-  width: 377px;
-  min-height: 100%;
-  padding: 32px;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  font-family: "ManropeBold";
-  transition: 10ms ease;
-  z-index: 100;
+  width: calc(100% + 32px);
+  left: -16px;
+
+  &__cartWrap {
+    min-height: 100%;
+    padding: 32px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: "ManropeBold";
+    transition: 10ms ease;
+    z-index: 100;
+    position: absolute;
+    background-color: white;
+    right: 60px;
+    top: 132px;
+    width: 377px;
+  }
 
   &__header {
     display: flex;
@@ -43,5 +49,34 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+  }
+
+  @media only screen and (max-width: 668px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__cartWrap {
+      right: auto;
+      left: auto;
+    }
+  }
+  @media only screen and (max-width: 432px) {
+    &__cartWrap {
+      max-width: 377px;
+      width: 100%;
+      padding: 32px 28px;
+    }
+  }
+
+  @media only screen and (max-width: 355px) {
+    &__cartWrap {
+      padding: 19px 19px;
+    }
+  }
+  @media only screen and (max-width: 320px) {
+    &__cartWrap {
+      padding: 14px 14px;
+    }
   }
 }

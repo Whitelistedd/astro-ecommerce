@@ -43,8 +43,8 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
             alt="mobileMenu"
             onClick={() => handleMobileMenu()}
           />
-          <a className={styles.nav__logo} href="/">
-            <img src={logoSRC} alt="logo" />
+          <a className={styles.nav__logoWrap} href="/">
+            <img className={styles.nav__logo} src={logoSRC} alt="logo" />
           </a>
           <NavList currentPath={currentPath} />
           <img

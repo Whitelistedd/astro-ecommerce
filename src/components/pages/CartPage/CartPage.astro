@@ -1,5 +1,6 @@
 ---
 import GoBack from "components/shared/goBack/goBack.astro";
+import { CartForm } from "./CartForm/CartForm";
 
 import styles from "./CartPage.module.less";
 ---
@@ -7,11 +8,9 @@ import styles from "./CartPage.module.less";
 <main class={styles.container}>
   <section class={styles.container__wrap}>
     <GoBack />
-    <div class={styles.container__wrap}>
-      <h1>CHECKOUT</h1>
-      <form>
-        <input />
-      </form>
+    <div class={styles.container__formWrap}>
+      <h1 class={styles.container__title}>CHECKOUT</h1>
+      <CartForm client:visible />
     </div>
   </section>
 </main>

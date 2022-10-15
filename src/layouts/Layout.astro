@@ -65,7 +65,7 @@ const { title, hideAbout } = Astro.props;
         padding: 0px;
         margin: 0px;
         height: 100vh;
-        max-width: 100vw;
+        max-width: 100%;
         font-family: system-ui, sans-serif;
         background-color: #f6f6f6;
         display: flex;
@@ -193,8 +193,13 @@ const { title, hideAbout } = Astro.props;
         border: none;
       }
 
-      input:active {
+      input:active,
+      input:focus {
         outline: 1px solid @orange;
+      }
+
+      input[aria-invalid="true"] {
+        outline: 2px solid #cd2c2c;
       }
 
       code {
