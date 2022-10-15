@@ -29,6 +29,10 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
     setShowCartMenu((prev) => (prev ? false : true));
   };
 
+  const handleOverlay = () => {
+    showMobileMenu ? handleMobileMenu() : handleCartMenu();
+  };
+
   return (
     <header>
       <nav className={`${currentPath === "" ? styles.home : ""} ${styles.nav}`}>
@@ -56,6 +60,17 @@ export const Navbar = ({ currentPath, className }: NavbarProps) => {
         showMobileMenu={showMobileMenu}
         handleMobileMenu={handleMobileMenu}
       />
+      <AnimatePresence>
+        {(showCartMenu || showMobileMenu) && (
+          <motion.nav
+            onClick={() => handleOverlay()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            className={styles.overlay}
+          />
+        )}
+      </AnimatePresence>
     </header>
   );
 };

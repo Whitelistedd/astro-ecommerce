@@ -15,34 +15,21 @@ export const MobileNav = ({
   handleMobileMenu,
 }: MobileNavProps) => {
   return (
-    <>
-      <AnimatePresence>
-        {showMobileMenu && (
-          <motion.nav
-            initial={{ y: -1000 }}
-            animate={{ y: -2 }}
-            exit={{ y: -1000 }}
-            className={`${styles.mobileMenu} ${styles.active}`}
-          >
-            <ul className={styles.mobileMenu__navList}>
-              {NavItems.slice(1).map((item, index) => (
-                <Category key={`mobole-item-${index}`} item={item} />
-              ))}
-            </ul>
-          </motion.nav>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {showMobileMenu && (
-          <motion.nav
-            onClick={() => handleMobileMenu()}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 1 }}
-            className={styles.overlay}
-          />
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence>
+      {showMobileMenu && (
+        <motion.nav
+          initial={{ y: -1000 }}
+          animate={{ y: -2 }}
+          exit={{ y: -1000 }}
+          className={`${styles.mobileMenu} ${styles.active}`}
+        >
+          <ul className={styles.mobileMenu__navList}>
+            {NavItems.slice(1).map((item, index) => (
+              <Category key={`mobole-item-${index}`} item={item} />
+            ))}
+          </ul>
+        </motion.nav>
+      )}
+    </AnimatePresence>
   );
 };

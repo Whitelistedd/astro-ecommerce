@@ -47,8 +47,16 @@ export const addProduct = action(
         .products.findIndex((item) => item.id === product.id);
       let allProducts = store.get().products;
       allProducts[currentProductIndex].quantity += product.quantity;
+      store.setKey(
+        "total",
+        store.get().total + product.price * product.quantity
+      );
       store.setKey("products", allProducts);
     } else {
+      store.setKey(
+        "total",
+        store.get().total + product.price * product.quantity
+      );
       store.setKey("products", [...store.get().products, product]);
     }
     return store.get();
@@ -64,6 +72,11 @@ export const addQuantity = action(shoppingCart, "increase", (store, id) => {
     let allProducts = store.get().products;
     allProducts[currentProduct].quantity += 1;
     store.setKey("products", allProducts);
+    console.log(store.get().total + allProducts[currentProduct].price);
+    store.setKey(
+      "total",
+      store.get().total + allProducts[currentProduct].price
+    );
   } else {
     return;
   }
@@ -80,6 +93,19 @@ export const removeQuantity = action(shoppingCart, "decrease", (store, id) => {
     if (allProducts[currentProduct].quantity - 1 !== 0) {
       allProducts[currentProduct].quantity -= 1;
       store.setKey("products", allProducts);
+      store.setKey(
+        "total",
+        store.get().total - allProducts[currentProduct].price
+      );
+    } else if (allProducts[currentProduct].quantity - 1 === 0) {
+      store.setKey(
+        "products",
+        shoppingCart.get().products.filter((item) => item.id !== id)
+      );
+      store.setKey(
+        "total",
+        store.get().total - allProducts[currentProduct].price
+      );
     }
   } else {
     return;

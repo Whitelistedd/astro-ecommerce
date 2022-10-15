@@ -2,6 +2,7 @@
 import { productList } from "constants/products";
 import styles from "./SingleProductPage.module.less";
 import { SingleProduct } from "./SingleProduct/SingleProduct";
+import GoBack from "components/shared/goBack/goBack.astro";
 
 interface ProductProps {
   newProduct: boolean;
@@ -25,15 +26,8 @@ const headphone = productList.find(
 ---
 
 <main class={styles.container}>
-  <script is:inline>
-    const goBack = () => {
-      window.history.back();
-    };
-  </script>
   <div class={styles.container__wrap}>
-    <a onclick="goBack()" class={styles.container__goBack}>
-      <p>Go Back</p>
-    </a>
+    <GoBack />
     {
       headphone && (
         <SingleProduct

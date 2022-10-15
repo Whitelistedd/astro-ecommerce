@@ -17,10 +17,7 @@ export const CartItem = ({ id, img, name, amount, qty }: CartItemProps) => {
 
   const handleQuantity = (type: string) => {
     if (type === "rem" && quantity - 1 === 0) {
-      shoppingCart.setKey(
-        "products",
-        shoppingCart.get().products.filter((item) => item.id !== id)
-      );
+      removeQuantity(id);
     } else if (type === "add") {
       setQuantity((prev) => prev + 1);
       addQuantity(id);

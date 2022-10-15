@@ -14,19 +14,12 @@ interface CartProps {
 
 export const Cart = ({ showCartMenu, handleCartMenu }: CartProps) => {
   const cartItems = useStore(shoppingCart).products;
+  const cartTotal = useStore(shoppingCart).total;
 
   const emptyCart = () => {
     shoppingCart.setKey("products", []);
     shoppingCart.setKey("total", 0);
   };
-
-  const handleCartTotal = () => {
-    let currentTotal = 0;
-    cartItems.map((item) => (currentTotal += item.price * item.quantity));
-    return currentTotal;
-  };
-
-  const totalCart = useMemo(() => handleCartTotal(), [cartItems]);
 
   return (
     <AnimatePresence>
@@ -60,12 +53,14 @@ export const Cart = ({ showCartMenu, handleCartMenu }: CartProps) => {
           <div className={styles.cartContainer__totalWrap}>
             <p className={styles.cartContainer__greyColor}>TOTAL</p>
             <strong className={styles.cartContainer__boldText}>
-              $ {totalCart}
+              $ {cartTotal}
             </strong>
           </div>
-          <button className={`btn ${styles.cartContainer__checkoutBtn}`}>
-            CHECKOUT
-          </button>
+          <a href="/cart">
+            <button className={`btn ${styles.cartContainer__checkoutBtn}`}>
+              CHECKOUT
+            </button>
+          </a>
         </motion.div>
       )}
     </AnimatePresence>

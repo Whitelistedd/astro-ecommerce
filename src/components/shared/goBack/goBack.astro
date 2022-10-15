@@ -1,0 +1,14 @@
+---
+import styles from "./goBack.module.less";
+---
+
+<div>
+  <script is:inline>
+    const goBack = () => {
+      window.history.back();
+    };
+  </script>
+  <a onclick="goBack()" class={styles.goBack}>
+    <p>Go Back</p>
+  </a>
+</div>
