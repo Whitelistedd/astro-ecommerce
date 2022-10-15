@@ -57,7 +57,7 @@ export const SingleProduct = ({
       quantity,
     };
     await addProduct(product);
-    shoppingCart.set([...shoppingCart.get()]);
+    shoppingCart.setKey("products", [...shoppingCart.get().products]);
   };
 
   return (

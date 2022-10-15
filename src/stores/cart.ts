@@ -1,5 +1,5 @@
-import { action } from "nanostores";
-import { persistentAtom } from "@nanostores/persistent";
+import { action, actionFor } from "nanostores";
+import { persistentAtom, persistentMap } from "@nanostores/persistent";
 
 type Product = {
   newProduct: boolean;
@@ -18,38 +18,52 @@ type Product = {
   }[];
 };
 
-export const shoppingCart = persistentAtom<Product[]>("cart", [], {
-  encode: JSON.stringify,
-  decode: JSON.parse,
-});
+type cart = {
+  products: Product[];
+  total: number;
+};
+
+export const shoppingCart = persistentMap<cart>(
+  "cart",
+  {
+    products: [],
+    total: 0,
+  },
+  {
+    encode: JSON.stringify,
+    decode: JSON.parse,
+  }
+);
 
 export const addProduct = action(
   shoppingCart,
   "addProduct",
   (store, product) => {
-    const inCart = store.get().find((item) => item.id === product.id);
+    const inCart = store.get().products.find((item) => item.id === product.id);
     if (inCart) {
       console.log(inCart);
       const currentProductIndex = store
         .get()
-        .findIndex((item) => item.id === product.id);
-      let allProducts = store.get();
+        .products.findIndex((item) => item.id === product.id);
+      let allProducts = store.get().products;
       allProducts[currentProductIndex].quantity += product.quantity;
-      store.set(allProducts);
+      store.setKey("products", allProducts);
     } else {
-      store.set([...store.get(), product]);
+      store.setKey("products", [...store.get().products, product]);
     }
     return store.get();
   }
 );
 
 export const addQuantity = action(shoppingCart, "increase", (store, id) => {
-  const inCart = store.get().find((item) => item.id === id);
+  const inCart = store.get().products.find((item) => item.id === id);
   if (inCart) {
-    const currentProduct = store.get().findIndex((item) => item.id === id);
-    let allProducts = store.get();
+    const currentProduct = store
+      .get()
+      .products.findIndex((item) => item.id === id);
+    let allProducts = store.get().products;
     allProducts[currentProduct].quantity += 1;
-    store.set(allProducts);
+    store.setKey("products", allProducts);
   } else {
     return;
   }
@@ -57,13 +71,15 @@ export const addQuantity = action(shoppingCart, "increase", (store, id) => {
 });
 
 export const removeQuantity = action(shoppingCart, "decrease", (store, id) => {
-  const inCart = store.get().find((item) => item.id === id);
+  const inCart = store.get().products.find((item) => item.id === id);
   if (inCart) {
-    const currentProduct = store.get().findIndex((item) => item.id === id);
-    let allProducts = store.get();
+    const currentProduct = store
+      .get()
+      .products.findIndex((item) => item.id === id);
+    let allProducts = store.get().products;
     if (allProducts[currentProduct].quantity - 1 !== 0) {
       allProducts[currentProduct].quantity -= 1;
-      store.set(allProducts);
+      store.setKey("products", allProducts);
     }
   } else {
     return;

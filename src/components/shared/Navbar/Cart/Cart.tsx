@@ -13,10 +13,11 @@ interface CartProps {
 }
 
 export const Cart = ({ showCartMenu, handleCartMenu }: CartProps) => {
-  const cartItems = useStore(shoppingCart);
+  const cartItems = useStore(shoppingCart).products;
 
   const emptyCart = () => {
-    shoppingCart.set([]);
+    shoppingCart.setKey("products", []);
+    shoppingCart.setKey("total", 0);
   };
 
   const handleCartTotal = () => {
