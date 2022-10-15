@@ -1,5 +1,8 @@
+import { Input } from "components/shared/Input/Input";
+import { shoppingCart } from "stores/cart";
 import styles from "./CartForm.module.less";
 import { useForm } from "react-hook-form";
+import { useStore } from "@nanostores/react";
 
 export const CartForm = () => {
   const {
@@ -8,6 +11,9 @@ export const CartForm = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const cartItems = useStore(shoppingCart).products;
+  const cartTotal = useStore(shoppingCart).total;
+
   const onSubmit = (data: any) => console.log(data);
 
   console.log(watch("example")); // watch input value by passing the name of it
@@ -15,15 +21,21 @@ export const CartForm = () => {
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form className={styles.formContainer} onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input defaultValue="test" {...register("example")} />
-
-      {/* include validation with required or other standard HTML validation rules */}
-      <input {...register("exampleRequired", { required: true })} />
-      {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
-
-      <input type="submit" />
+      <div className={styles.inputContainer}>
+        <h1 className={styles.inputContainer__title}>CHECKOUT</h1>
+        <div className={styles.inputContainer__inputWrap}>
+          <Input register={register} label="Name" error={errors.name} />
+          <input {...register("exampleRequired", { required: true })} />
+          <input {...register("exampleRequired", { required: true })} />
+        </div>
+      </div>
+      <div className={styles.sumContainer}>
+        <p>SUMMARY</p>
+        <div>
+          <p>TOTAL</p>
+          <p>{cartTotal}</p>
+        </div>
+      </div>
     </form>
   );
 };

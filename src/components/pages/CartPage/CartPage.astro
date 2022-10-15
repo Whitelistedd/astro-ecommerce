@@ -8,9 +8,6 @@ import styles from "./CartPage.module.less";
 <main class={styles.container}>
   <section class={styles.container__wrap}>
     <GoBack />
-    <div class={styles.container__formWrap}>
-      <h1 class={styles.container__title}>CHECKOUT</h1>
-      <CartForm client:visible />
-    </div>
+    <CartForm client:visible />
   </section>
 </main>

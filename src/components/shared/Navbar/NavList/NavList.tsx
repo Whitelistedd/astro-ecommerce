@@ -11,6 +11,7 @@ export const NavList = ({ currentPath, className }: NavListProps) => {
     <ul className={`${className} ${styles.navList}`}>
       {NavItems.map((item, index) => (
         <li
+          key={index}
           className={
             item === "home" && !currentPath
               ? styles.navList__navItem_active
