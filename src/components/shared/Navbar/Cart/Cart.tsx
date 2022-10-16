@@ -37,7 +37,7 @@ export const Cart = ({ showCartMenu, handleCartMenu }: CartProps) => {
               </strong>
               <p
                 onClick={() => emptyCart()}
-                className={styles.cartContainer__greyColor}
+                className={`${styles.cartContainer__removeAll} ${styles.cartContainer__greyColor}`}
               >
                 Remove all
               </p>

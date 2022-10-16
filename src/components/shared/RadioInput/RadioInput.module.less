@@ -7,7 +7,7 @@
     width: 100%;
     gap: 16px;
     border: 1px solid #cfcfcf;
-    padding: 23px 21px;
+    padding: 18px 16px;
     border-radius: 8px;
     transition: 300ms ease;
   }
@@ -23,13 +23,17 @@
     }
   }
 
-  input + div {
-    color: red;
-    background-color: red !important;
-    transform: scale(1.25);
+  &__label {
+    font-weight: 900;
   }
 
   &__wrapChecked {
     border: 1px solid @orange;
+  }
+
+  @media only screen and (max-width: 365px) {
+    &__label {
+      font-size: 0.8rem;
+    }
   }
 }

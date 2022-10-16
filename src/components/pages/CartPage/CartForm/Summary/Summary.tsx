@@ -15,8 +15,9 @@ export const Summary = ({ cartTotal }: SummaryProps) => {
     <div className={styles.sumContainer}>
       <p className={styles.sumContainer__title}>SUMMARY</p>
       <div className={styles.sumContainer__cartItems}>
-        {cartItems.map((cartItem) => (
+        {cartItems?.map((cartItem, index) => (
           <CartItem
+            key={`cart-item-${index}`}
             image={cartItem.image}
             name={cartItem.shortName}
             price={cartItem.price}
@@ -27,7 +28,7 @@ export const Summary = ({ cartTotal }: SummaryProps) => {
       <div className={styles.sumContainer__priceContainer}>
         <div className={styles.sumContainer__priceRow}>
           <p className={styles.sumContainer__priceName}>TOTAL</p>
-          <p>$ {cartTotal}</p>
+          <p>$ {cartTotal && cartTotal}</p>
         </div>
         <div className={styles.sumContainer__priceRow}>
           <p className={styles.sumContainer__priceName}>SHIPPING</p>
@@ -40,7 +41,7 @@ export const Summary = ({ cartTotal }: SummaryProps) => {
         <div className={styles.sumContainer__totalRow}>
           <p className={styles.sumContainer__priceName}>GRAND TOTAL</p>
           <p className={styles.sumContainer__grandPrice}>
-            $ {cartTotal + 50 + 1079}
+            $ {cartTotal && cartTotal + 50 + 1079}
           </p>
         </div>
       </div>

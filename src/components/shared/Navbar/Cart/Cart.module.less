@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.less";
+
 .cartContainer {
   position: absolute;
   width: calc(100% + 32px);
@@ -49,6 +51,13 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+  }
+
+  &__removeAll {
+    &:hover {
+      color: @orange;
+      cursor: pointer;
+    }
   }
 
   @media only screen and (max-width: 668px) {

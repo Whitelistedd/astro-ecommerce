@@ -1,6 +1,7 @@
 import { CartItem } from "../CartItem/CartItem";
 import { Input } from "components/shared/Input/Input";
 import { RadioInput } from "components/shared/RadioInput/RadioInput";
+import { SuccessPopup } from "../SuccessPopup/SuccessPopup";
 import { Summary } from "./Summary/Summary";
 import { shoppingCart } from "stores/cart";
 import styles from "./CartForm.module.less";
@@ -8,17 +9,24 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useStore } from "@nanostores/react";
 
+const shippingInputList = ["Address", "ZIP Code", "City", "Country"];
+
 export const CartForm = () => {
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      payment: "eMoney",
+    },
+  });
   const cartTotal = useStore(shoppingCart).total;
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [orderSuccess, setOrderSuccess] = useState(false);
 
-  const onSubmit = (data: any) => console.log(data);
+  const onSubmit = (data: any) => setOrderSuccess(true);
 
   const handlePaymentChange = (paymentMethod: string) => {
     setPaymentMethod(paymentMethod);
@@ -33,34 +41,31 @@ export const CartForm = () => {
         <div className={styles.inputContainer__inputList}>
           <p className={`subtitle`}>BILLING DETAILS</p>
           <div className={styles.inputContainer__billingInputs}>
-            <Input register={register} label="Name" />
-            <Input register={register} label="Email Address" />
-            <Input register={register} label="Phone Number" />
+            <Input register={register} error={errors} label="Name" />
+            <Input
+              register={register}
+              type="email"
+              error={errors}
+              label="Email Address"
+            />
+            <Input register={register} error={errors} label="Phone Number" />
           </div>
         </div>
         <div className={styles.inputContainer__inputList}>
           <p className={`subtitle`}>SHIPPING INFO</p>
           <div className={styles.inputContainer__shippingInputs}>
-            <Input
-              className={styles.inputContainer__maxInput}
-              register={register}
-              label="Address"
-            />
-            <Input
-              className={styles.inputContainer__input}
-              register={register}
-              label="ZIP Code"
-            />
-            <Input
-              className={styles.inputContainer__input}
-              register={register}
-              label="City"
-            />
-            <Input
-              className={styles.inputContainer__iInput}
-              register={register}
-              label="Country"
-            />
+            {shippingInputList.map((input, index) => (
+              <Input
+                error={errors}
+                className={
+                  index === 0
+                    ? styles.inputContainer__maxInput
+                    : styles.inputContainer__input
+                }
+                register={register}
+                label={input}
+              />
+            ))}
           </div>
         </div>
         <div className={styles.inputContainer__paymentContainer}>
@@ -96,6 +101,7 @@ export const CartForm = () => {
         </div>
       </div>
       <Summary cartTotal={cartTotal} />
+      <SuccessPopup orderSuccess={orderSuccess} />
     </form>
   );
 };

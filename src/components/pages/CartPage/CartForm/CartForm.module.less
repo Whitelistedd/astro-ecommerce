@@ -22,13 +22,16 @@
   &__billingInputs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-rows: repeat(auto, 1fr);
+    row-gap: 24px;
+    column-gap: 16px;
   }
 
   &__shippingInputs {
     display: grid;
     grid-template-areas: "full full" "normal normal" "normal normal";
-    gap: 16px;
+    row-gap: 24px;
+    column-gap: 16px;
   }
 
   &__input:nth-child(1) {
@@ -49,7 +52,8 @@
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    row-gap: 25px;
+    column-gap: 16px;
   }
 
   &__paymentRadio {
@@ -79,6 +83,9 @@
       display: grid;
       grid-template-areas: "full" "normal" "normal";
       gap: 16px;
+    }
+    &__title {
+      font-size: 1.7rem;
     }
     &__paymentContainer {
       display: flex;
