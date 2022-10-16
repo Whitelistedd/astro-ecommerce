@@ -1,14 +1,14 @@
+@import "../../../../styles/variables.less";
+
 .formContainer {
   min-height: 1126px;
   display: flex;
   gap: 30px;
-}
+  font-family: "ManropeRegular";
 
-.sumContainer {
-  border-radius: 8px;
-  width: 350px;
-  background-color: white;
-  padding: 32px 33px;
+  @media only screen and (max-width: 975px) {
+    flex-direction: column;
+  }
 }
 
 .inputContainer {
@@ -19,12 +19,71 @@
   gap: 41px;
   border-radius: 8px;
   width: 100%;
-  &__inputWrap {
-    display: flex;
+  &__billingInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    flex-wrap: wrap;
   }
+
+  &__shippingInputs {
+    display: grid;
+    grid-template-areas: "full full" "normal normal" "normal normal";
+    gap: 16px;
+  }
+
+  &__input:nth-child(1) {
+    grid-area: normal;
+  }
+
+  &__maxInput {
+    width: 100%;
+    max-width: 100%;
+    grid-area: full;
+    input {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__paymentContainer {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  &__paymentRadio {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__title {
     font-size: 2rem;
+  }
+
+  &__inputList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 30px 28px;
+  }
+  @media only screen and (max-width: 565px) {
+    &__billingInputs {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &__shippingInputs {
+      display: grid;
+      grid-template-areas: "full" "normal" "normal";
+      gap: 16px;
+    }
+    &__paymentContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 }

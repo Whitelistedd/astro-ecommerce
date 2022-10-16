@@ -33,7 +33,7 @@ export const Cart = ({ showCartMenu, handleCartMenu }: CartProps) => {
           >
             <div className={styles.cartContainer__header}>
               <strong className={styles.cartContainer__boldText}>
-                CART (3)
+                CART ({cartItems.length})
               </strong>
               <p
                 onClick={() => emptyCart()}

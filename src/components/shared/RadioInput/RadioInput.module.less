@@ -1,0 +1,35 @@
+@import "../../../styles/variables.less";
+
+.container {
+  &__wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 16px;
+    border: 1px solid #cfcfcf;
+    padding: 23px 21px;
+    border-radius: 8px;
+    transition: 300ms ease;
+  }
+
+  &__input {
+    width: 20px;
+    height: 20px;
+    outline: none;
+    accent-color: @orange;
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input + div {
+    color: red;
+    background-color: red !important;
+    transform: scale(1.25);
+  }
+
+  &__wrapChecked {
+    border: 1px solid @orange;
+  }
+}

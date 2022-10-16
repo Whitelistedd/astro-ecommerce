@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__imgWrap {
+    width: 60px;
+    border-radius: 8px;
+    img {
+      border-radius: 8px;
+      width: 100%;
+    }
+  }
+
+  &__details {
+    margin-right: auto;
+  }
+
+  &__name,
+  &__price,
+  &__quantity {
+    font-weight: 800;
+  }
+
+  &__price,
+  &__quantity {
+    opacity: 0.5;
+  }
+
+  &__quantity {
+    align-self: flex-start;
+  }
+}

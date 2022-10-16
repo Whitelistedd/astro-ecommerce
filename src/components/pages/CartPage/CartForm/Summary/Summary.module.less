@@ -1,0 +1,59 @@
+@import "../../../../../styles/variables.less";
+
+.sumContainer {
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+  background-color: white;
+  padding: 32px 33px;
+  display: flex;
+  flex-direction: column;
+  gap: 31px;
+
+  &__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  &__priceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__priceRow,
+  &__totalRow {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    p {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__totalRow {
+    padding-top: 20px;
+  }
+
+  &__cartItems {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__priceName {
+    opacity: 0.5;
+    font-weight: 500;
+  }
+
+  &__grandPrice {
+    color: @orange;
+  }
+
+  &__submit {
+    padding: 15px 59px;
+  }
+  @media only screen and (max-width: 975px) {
+    max-width: 100%;
+  }
+}
