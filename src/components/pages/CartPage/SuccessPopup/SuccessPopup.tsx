@@ -20,7 +20,7 @@ export const SuccessPopup = ({ orderSuccess }: SuccessPopupProps) => {
 
   return (
     <AnimatePresence>
-      {orderSuccess && (
+      {true && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -29,9 +29,9 @@ export const SuccessPopup = ({ orderSuccess }: SuccessPopupProps) => {
         >
           <div className={styles.container__wrap}>
             <img className={styles.container__successIMG} src={successSRC} />
-            <h1 className={styles.container__title}>
+            <h4 className={styles.container__title}>
               THANK YOU FOR YOUR ORDER
-            </h1>
+            </h4>
             <p className={styles.container__desc}>
               You will receive an email confirmation shortly.
             </p>
