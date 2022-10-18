@@ -21,6 +21,7 @@ type Product = {
 type cart = {
   products: Product[];
   total: number;
+  addedItem: boolean;
 };
 
 export const shoppingCart = persistentMap<cart>(
@@ -28,6 +29,7 @@ export const shoppingCart = persistentMap<cart>(
   {
     products: [],
     total: 0,
+    addedItem: false,
   },
   {
     encode: JSON.stringify,
@@ -53,6 +55,7 @@ export const addProduct = action(
       );
       store.setKey("products", allProducts);
     } else {
+      store.setKey("addedItem", true);
       store.setKey(
         "total",
         store.get().total + product.price * product.quantity

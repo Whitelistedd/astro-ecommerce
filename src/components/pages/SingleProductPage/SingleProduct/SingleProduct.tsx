@@ -1,7 +1,6 @@
 import { addProduct, shoppingCart } from "stores/cart";
 
 import { ItemQuantity } from "components/shared/ItemQuantity/ItemQuantity";
-import { productList } from "constants/products";
 import styles from "./SingleProduct.module.less";
 import { useState } from "react";
 
